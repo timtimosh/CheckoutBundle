@@ -1,0 +1,19 @@
+{
+    "name": "mtt/checkout-bundle",
+    "require": {
+	"php": ">=7.1",
+	"symfony/symfony": "~3.4.0",
+        "lenius/basket": "~v2.0.1"
+    },
+  "autoload": {
+    "psr-4": {
+      "Mtt\\CheckoutBundle\\": "src/"
+    }
+  },
+    "authors": [
+        {
+            "name": "tymosh",
+            "email": "mrtimosh@gmail.com"
+        }
+    ]
+}
