@@ -1,0 +1,4 @@
+mtt_checkout.add_item:
+    path:  /checkout/add/{id}/{qty}
+    defaults: { _controller: mtt_checkout.checkout_controller_service:add }
+    use_referer: true
