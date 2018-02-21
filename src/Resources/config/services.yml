@@ -15,7 +15,7 @@ services:
         class: Mtt\CheckoutBundle\Controller\CheckoutController
         tags: ['controller.service_arguments']
         arguments:
-            - '@mtt_checkout.checkout_service'
+            - '@mtt_checkout.basket_service'
             - '@mtt_catalog.product_repository.service'
 
     mtt_checkout.basket_service:
