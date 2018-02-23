@@ -3,7 +3,9 @@ services:
         class: Lenius\Basket\Identifier\Cookie
 
     mtt_checkout.basket_storage_service:
-        class: Mtt\CheckoutBundle\Model\Basket\Storage\Session
+        class: Mtt\CheckoutBundle\Model\Storage\Session
+        arguments:
+            - '@session'
 
     mtt_checkout.basket_service:
         class:  Mtt\CheckoutBundle\Service\BasketService
@@ -11,14 +13,9 @@ services:
             - '@mtt_checkout.basket_storage_service'
             - '@mtt_checkout.basket_identifier_service'
 
-    mtt_checkout.checkout_controller_service:
-        class: Mtt\CheckoutBundle\Controller\CheckoutController
+    mtt_checkout.checkout_controller_action_service:
+        class: Mtt\CheckoutBundle\Controller\CheckoutActionsController
         tags: ['controller.service_arguments']
         arguments:
             - '@mtt_checkout.basket_service'
             - '@mtt_catalog.product_repository.service'
-
-    mtt_checkout.basket_service:
-        class:  Mtt\CheckoutBundle\Form\OnePageCheckoutFormBuilderService
-        arguments:
-            - '@mtt_checkout.basket_service'

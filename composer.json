@@ -4,7 +4,6 @@
     "php": ">=7.1",
     "symfony/symfony": "~3.4.0",
     "lenius/basket": "~v2.0.1",
-    "mtt/shipping-bundle": "dev-master"
   },
   "autoload": {
     "psr-4": {

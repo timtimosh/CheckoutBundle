@@ -1,4 +1,7 @@
 mtt_checkout.add_item:
     path:  /checkout/add/{id}/{qty}
-    defaults: { _controller: mtt_checkout.checkout_controller_service:add }
-    use_referer: true
+    defaults: { _controller: mtt_checkout.checkout_controller_action_service:addItemAction }
+
+mtt_checkout.remove_item:
+    path:  /checkout/remove/{identifier}
+    defaults: { _controller: mtt_checkout.checkout_controller_action_service:removeItemAction }

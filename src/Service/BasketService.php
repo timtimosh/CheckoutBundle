@@ -4,18 +4,16 @@ namespace Mtt\CheckoutBundle\Service;
 
 use Lenius\Basket\IdentifierInterface;
 use Lenius\Basket\StorageInterface;
-use Mtt\CheckoutBundle\Model\Basket\Item;
-use Mtt\Core\Interfaces\Checkout\CheckoutInterface;
-use Mtt\Core\Interfaces\Checkout\ItemInterface;
+use Mtt\CheckoutBundle\Model\ItemInterface;
 
-class BasketService implements CheckoutInterface
+class BasketService implements BasketServiceInterface
 {
     /**
      * @var \Lenius\Basket\Identifier\Cookie
      */
     protected $identifier;
     /**
-     * @var \Mtt\CheckoutBundle\Model\Storage\Session
+     * @var \Mtt\CheckoutBundle\Model\Basket\Storage\Session
      */
     protected $storage;
 
@@ -45,7 +43,7 @@ class BasketService implements CheckoutInterface
      */
     public function contents(): ?array
     {
-        return $this->storage->data();
+        return $this->storage->data(false);
     }
 
 
@@ -57,13 +55,7 @@ class BasketService implements CheckoutInterface
      */
     public function insert(ItemInterface $item)
     {
-
-        if(true === $this->has($item->getIdentifier())){
-            return;
-        }
-
         $this->storage->insert($item);
-
         return $item->getIdentifier();
     }
 
@@ -76,7 +68,7 @@ class BasketService implements CheckoutInterface
      *
      * @return void
      */
-    public function remove($identifier)
+    public function remove(string $identifier)
     {
         $this->storage->remove($identifier);
     }
@@ -98,7 +90,7 @@ class BasketService implements CheckoutInterface
      *
      * @return bool Yes or no?
      */
-    public function has($itemIdentifier):bool
+    public function has(string $itemIdentifier):bool
     {
         return $this->storage->has($itemIdentifier);
     }
@@ -141,7 +133,7 @@ class BasketService implements CheckoutInterface
      *
      * @return int Total number of items
      */
-    public function totalItems($unique = false):int
+    public function totalItems(bool $unique = false):int
     {
         $total = 0;
 
@@ -150,18 +142,6 @@ class BasketService implements CheckoutInterface
         }
 
         return $total;
-    }
-
-    /**
-     * Set the basket identifier, useful if restoring a saved basket.
-     *
-     * @param  mixed The identifier
-     *
-     * @return void
-     */
-    public function setIdentifier($identifier)
-    {
-        $this->storage->setIdentifier($identifier);
     }
 
 }

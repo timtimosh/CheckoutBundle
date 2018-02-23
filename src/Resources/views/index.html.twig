@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+    {% block title %}
+        {% trans %}Checkout{% endtrans %}
+    {% endblock %}
+
+{% block content %}
+
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h1>{% trans %}Checkout{% endtrans %}</h1>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <div class="table-responsive">
+                {% include '@mtt_checkout/list.html.twig' with {'basketItems': basketItems} only %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+

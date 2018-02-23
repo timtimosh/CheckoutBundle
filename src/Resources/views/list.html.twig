@@ -1,0 +1,24 @@
+<table class="table table-bordered bulk_action dataTable products-list">
+    <thead>
+    <tr class="headings">
+        <th>{% trans %}Name{% endtrans %}</th>
+        <th>{% trans %}Sku{% endtrans %}</th>
+        <th>{% trans %}Qty{% endtrans %}</th>
+        <th>{% trans %}Price{% endtrans %}</th>
+        <th>{% trans %}Actions{% endtrans %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in basketItems %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.sku }}</td>
+            <td>
+                <input type="number" name="number" value="{{ item.quantity }}" class="col-xs-3">
+            </td>
+            <td>{{ item.price }}</td>
+            <td><a href="{{ path('mtt_checkout.remove_item', {'identifier': item.identifier}) }}">Remove</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
