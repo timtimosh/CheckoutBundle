@@ -5,7 +5,10 @@ use Mtt\CheckoutBundle\Model\ItemInterface;
 
 interface BasketServiceInterface
 {
-    public function contents(): ?array;
+    /**
+     * @return ItemInterface[]
+     */
+    public function contents(): array;
 
 
     public function insert(ItemInterface $item);

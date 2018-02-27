@@ -41,7 +41,7 @@ class BasketService implements BasketServiceInterface
     /**
      * @return ItemInterface[]
      */
-    public function contents(): ?array
+    public function contents(): array
     {
         return $this->storage->data(false);
     }
