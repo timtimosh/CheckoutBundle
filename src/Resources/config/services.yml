@@ -12,6 +12,9 @@ services:
         arguments:
             - '@mtt_checkout.basket_storage_service'
             - '@mtt_checkout.basket_identifier_service'
+        autowire: true
+
+    Mtt\CheckoutBundle\Service\BasketServiceInterface: '@mtt_checkout.basket_service'
 
     mtt_checkout.checkout_controller_action_service:
         class: Mtt\CheckoutBundle\Controller\CheckoutActionsController
@@ -19,3 +22,4 @@ services:
         arguments:
             - '@mtt_checkout.basket_service'
             - '@mtt_catalog.product_repository.service'
+
